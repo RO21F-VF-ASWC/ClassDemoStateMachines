@@ -6,9 +6,13 @@ namespace ClassDemoStateMachines.StateDesignPattern
 {
     public class StateMachineDesignPattern:IStateMachine<char>
     {
+        IState<char,bool> currentState = new State0();
+
         public bool NextInput(char input)
         {
-            throw new NotImplementedException();
+            bool returVærdi = currentState.OutputFunction(input);
+            currentState = currentState.NextStateFunction(input);
+            return returVærdi;
         }
     }
 }
